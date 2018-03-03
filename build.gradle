@@ -1,28 +1,25 @@
-apply plugin: 'com.android.library'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-android {
-    compileSdkVersion 27
-
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 3
-        versionName "1.0.3"
+buildscript {
+    repositories {
+        jcenter()
+        google()
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-dependencies {
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-annotations:27.0.2'
-    compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.10'
-    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
-    compile files('libs/jmdns-3.4.2.jar')
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
