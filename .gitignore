@@ -1,8 +1,8 @@
-/build
-/.gradle
+build
+.gradle
 /local.properties
-/gradlew
-/gradlew.bat
 /rx-bonjour.iml
-/lib/lib.iml
-/sample/sample.iml
+*.iml
+*/*.iml
+*/build/
+.idea
