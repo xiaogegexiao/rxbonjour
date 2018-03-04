@@ -2,7 +2,7 @@
 This library has been built in order to provide a Reactive wrapper around the Android [Network Service Discovery][nsd] API and the [JmDNS implementation][jmdns] for older devices.  
 
 ![Compatibility: Android 4.0+](https://img.shields.io/badge/compatibility-Android%204.0%2B-green.svg)
-![Version: 1.0.0](https://img.shields.io/badge/version-1.0.0-green.svg)
+![Version: 1.0.6](https://img.shields.io/badge/version-1.0.6-green.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ## What is Zeroconf
 From [Wikipedia][wikipedia-zeroconf]:
@@ -29,7 +29,7 @@ Import the library in your app's module ```build.gradle```
 ```groovy
 dependencies {
     ...
-    compile 'com.github.xiaogegexiao:rxbonjour:1.0.0'
+    compile 'com.github.xiaogegexiao:rxbonjour:1.0.6'
 }
 ```
 
@@ -49,7 +49,7 @@ Add the dependency
 <dependency>
     <groupId>com.github.xiaogegexiao</groupId>
     <artifactId>rxbonjour</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
