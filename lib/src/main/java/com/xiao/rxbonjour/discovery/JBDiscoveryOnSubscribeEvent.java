@@ -3,7 +3,9 @@ package com.xiao.rxbonjour.discovery;
 import android.content.Context;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import com.xiao.rxbonjour.common.OnSubscribeEvent;
 import com.xiao.rxbonjour.exceptions.NsdException;
@@ -20,6 +22,7 @@ import static com.xiao.rxbonjour.exceptions.NsdException.STOP_DISCOVERY;
 import static com.xiao.rxbonjour.model.NsdStatus.ADDED;
 import static com.xiao.rxbonjour.model.NsdStatus.REMOVED;
 
+@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 public class JBDiscoveryOnSubscribeEvent implements OnSubscribeEvent<NsdServiceInfoWrapper> {
 
     private NsdManager nsdManager;

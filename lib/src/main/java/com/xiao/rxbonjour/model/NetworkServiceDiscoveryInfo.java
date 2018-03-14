@@ -2,10 +2,12 @@ package com.xiao.rxbonjour.model;
 
 
 import android.net.nsd.NsdServiceInfo;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 import com.xiao.rxbonjour.utils.InetUtils;
 import com.xiao.rxbonjour.utils.MapUtils;
@@ -115,16 +117,19 @@ public class NetworkServiceDiscoveryInfo implements NsdStatus, Parcelable {
         return serviceName.hashCode() + serviceLayer.hashCode() + servicePort + address.hashCode();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @NonNull
     public static NetworkServiceDiscoveryInfo from (@NonNull NsdServiceInfo source) {
         return from (source, ADDED);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @NonNull
     public static NetworkServiceDiscoveryInfo from (@NonNull NsdServiceInfoWrapper wrapper) {
         return from(wrapper.getNsdServiceInfo(), wrapper.getStatus());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @NonNull
     public static NetworkServiceDiscoveryInfo from (@NonNull NsdServiceInfo source, @STATUS int status) {
         return new NetworkServiceDiscoveryInfo(source.getServiceName(), source.getServiceType(),
@@ -143,7 +148,7 @@ public class NetworkServiceDiscoveryInfo implements NsdStatus, Parcelable {
 
     @NonNull
     public static NetworkServiceDiscoveryInfo from (@NonNull ServiceInfo source, @NonNull Map attributes, @STATUS int status) {
-        return new NetworkServiceDiscoveryInfo(source.getName(), source.getType(), source.getPort(), attributes, status, InetUtils.getHostAddressFrom(source));
+        return new NetworkServiceDiscoveryInfo(source.getName(), source.getType(), source.getPort(), attributes, status, InetUtils.getIpv4HostAddressFrom(source));
     }
 
     @Override

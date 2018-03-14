@@ -4,8 +4,8 @@ package com.xiao.rxbonjour.discovery;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
-import com.xiao.rxbonjour.RxBonjour;
 import com.xiao.rxbonjour.common.Functions;
 import com.xiao.rxbonjour.common.OnSubscribeEvent;
 import com.xiao.rxbonjour.common.Transformers;
@@ -15,12 +15,16 @@ import com.xiao.rxbonjour.resolution.JBDiscoveryServiceResolver;
 
 import io.reactivex.Observable;
 
+import static com.xiao.rxbonjour.RxBonjour.ALL_AVAILABLE_SERVICES;
+
 public class DiscoveryOnSubscribeFactory {
 
     public static Observable<NetworkServiceDiscoveryInfo> from(@NonNull Context context) {
-        return buildNewJBObservableFrom(context, RxBonjour.ALL_AVAILABLE_SERVICES)
-                .map(Functions.toNetworkServiceDiscoveryInfo())
-                .compose(Transformers.networking());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return buildJBObservableFrom(context, ALL_AVAILABLE_SERVICES);
+        } else {
+            return buildCompatObservableFrom(context, ALL_AVAILABLE_SERVICES);
+        }
     }
 
     public static Observable<NetworkServiceDiscoveryInfo> from(@NonNull Context context,
@@ -44,6 +48,7 @@ public class DiscoveryOnSubscribeFactory {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private static Observable<NetworkServiceDiscoveryInfo> buildJBObservableFrom(Context context, String protocol) {
         return buildNewJBObservableFrom(context, protocol)
                 .concatMap(JBDiscoveryServiceResolver.with(context))
@@ -51,6 +56,7 @@ public class DiscoveryOnSubscribeFactory {
                 .compose(Transformers.networking());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private static Observable<NsdServiceInfoWrapper> buildNewJBObservableFrom(Context context, String protocol) {
         OnSubscribeEvent<NsdServiceInfoWrapper> onSubscribe = new JBDiscoveryOnSubscribeEvent(context, protocol);
         return Observable.create(onSubscribe);

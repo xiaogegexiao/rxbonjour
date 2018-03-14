@@ -3,7 +3,9 @@ package com.xiao.rxbonjour.resolution;
 import android.content.Context;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 
 import com.xiao.rxbonjour.model.NsdServiceInfoWrapper;
@@ -13,7 +15,7 @@ import io.reactivex.ObservableOnSubscribe;
 
 import static android.net.nsd.NsdManager.ResolveListener;
 
-
+@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 public class JBResolverOnSubscribeEvent implements ObservableOnSubscribe<NsdServiceInfoWrapper> {
 
     private NsdServiceInfoWrapper nsdServiceInfo;

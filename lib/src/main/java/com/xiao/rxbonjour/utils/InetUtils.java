@@ -1,5 +1,6 @@
 package com.xiao.rxbonjour.utils;
 
+import java.net.Inet4Address;
 import java.net.InetAddress;
 
 import javax.jmdns.ServiceInfo;
@@ -15,6 +16,13 @@ public class InetUtils {
             return source.getInet6Addresses()[0];
         }
 
+        return null;
+    }
+
+    public static Inet4Address getIpv4HostAddressFrom(ServiceInfo source) {
+        if (isValid(source.getInet4Addresses())) {
+            return source.getInet4Addresses()[0];
+        }
         return null;
     }
 
