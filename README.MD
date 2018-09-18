@@ -2,7 +2,7 @@
 This library has been built in order to provide a Reactive wrapper around the Android [Network Service Discovery][nsd] API and the [JmDNS implementation][jmdns] for older devices.  
 
 ![Compatibility: Android 4.0+](https://img.shields.io/badge/compatibility-Android%204.0%2B-green.svg)
-![Version: 1.0.8](https://img.shields.io/badge/version-1.0.6-green.svg)
+![Version: 1.0.8](https://img.shields.io/badge/version-1.0.8-green.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ## What is Zeroconf
 From [Wikipedia][wikipedia-zeroconf]:
