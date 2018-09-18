@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.xiaogegexiao'
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 3
-        versionName "1.0.2"
+        targetSdkVersion 28
+        versionCode 10
+        versionName "1.0.8"
     }
     buildTypes {
         release {
@@ -19,11 +19,11 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-annotations:27.0.2'
-    compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.10'
-    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
-    compile files('libs/jmdns-3.4.2.jar')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:support-annotations:28.0.0-rc02'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.2'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+    implementation files('libs/jmdns-3.4.2.jar')
 }
